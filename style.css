@@ -1,8 +1,20 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
 body {
-    height: 2000px;
+  height: 2000px;
   margin: 0;
   padding: 0;
   background-color: #f8fcf8;
+  overflow-x: hidden;
   
 }
 
@@ -47,8 +59,144 @@ canvas {
     background: #239C41; /* Slightly darker shade for hover effect */
 }
 
-.flex-container {
-  height: 700px;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* padding: 10px 20px; */
+  background: #80BE95;
+  color: white;
+}
+
+/* Logo Section */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  
+}
+
+.logo-text{
+  font-size: 50px;
+  font-weight: bold;
+  font-family: "Cookie", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.logo img {
+  margin-left: 10%;
+  width: 60px;
+  height: 60px;
+}
+
+/* Center Navigation Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #ffcc00;
+}
+
+/* Right Section */
+.right-section {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-right: 1%;
+}
+
+.right-section img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.right-section p {
+  font-size: 14px;
+}
+
+button {
+  padding: 8px 15px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 5px;
+  
+}
+
+.signup {
+  background: #007bff;
+  color: white;
+}
+
+.signup:hover {
+  background: #0056b3;
+}
+
+.login {
+  background: #444;
+  color: white;
+}
+
+.login:hover {
+  background: #666;
+}
+
+/* Mobile Menu Button */
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  background: none;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background: #222;
+      text-align: center;
+  }
+
+  .nav-links.active {
+      display: flex;
+  }
+
+  .menu-toggle {
+      display: block;
+  }
+
+  .right-section {
+      display: none;
+  }
+}
+
+
+
+
+
+
+
+.home-container {
+  height: 85vh;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -59,9 +207,9 @@ canvas {
   border: 2px solid black;
 }
 
-.flex-items:nth-child(1) {
-  height: 600px;
-  width: 100px;
+.aboutCustomer {
+  height: 85vh;
+  width: 20%;
   display: block;
   flex-grow: 0;
   flex-shrink: 1;
@@ -71,9 +219,9 @@ canvas {
   border: 2px solid black;
 }
 
-.flex-items:nth-child(2) {
-  height: 600px;
-  width: 100px;
+.ai {
+  height: 85vh;
+  width: 60%;
   display: block;
   flex-grow: 0;
   flex-shrink: 1;
@@ -83,9 +231,9 @@ canvas {
   border: 2px solid black;
 }
 
-.flex-items:nth-child(3) {
-  height: 600px;
-  width: 100px;
+.instantSearch {
+  height: 85vh;
+  width: 20%;
   display: block;
   flex-grow: 0;
   flex-shrink: 1;
@@ -94,3 +242,25 @@ canvas {
   order: 0;
   border: 2px solid black;
 }
+
+.aiContainer{
+  height: 70vh;
+  width: 55%;
+  border: 1px solid black;
+
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+  
+}
+
+
+#reports{
+  height: auto;
+  width: 100vw;
+}
+
+
+
