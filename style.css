@@ -48,37 +48,49 @@ canvas {
 }
 
 .flex-container {
+  height: 700px;
+  width: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: normal;
   align-items: stretch;
   align-content: stretch;
+  border: 2px solid black;
 }
 
 .flex-items:nth-child(1) {
+  height: 600px;
+  width: 100px;
   display: block;
   flex-grow: 0;
   flex-shrink: 1;
   flex-basis: auto;
   align-self: auto;
   order: 0;
+  border: 2px solid black;
 }
 
 .flex-items:nth-child(2) {
+  height: 600px;
+  width: 100px;
   display: block;
   flex-grow: 0;
   flex-shrink: 1;
   flex-basis: auto;
   align-self: auto;
   order: 0;
+  border: 2px solid black;
 }
 
 .flex-items:nth-child(3) {
+  height: 600px;
+  width: 100px;
   display: block;
   flex-grow: 0;
   flex-shrink: 1;
   flex-basis: auto;
   align-self: auto;
   order: 0;
+  border: 2px solid black;
 }
