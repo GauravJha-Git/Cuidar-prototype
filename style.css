@@ -262,5 +262,58 @@ button {
   width: 100vw;
 }
 
+.reports-container {
+  height: 70vh;
+  width: 100vw;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: normal;
+  align-items: normal;
+  align-content: normal;
+}
+
+.graph {
+  height: 70vh;
+  width:  40%;
+  border: 2px solid black;
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+  order: 0;
+}
+
+.improvements {
+  height: 70vh;
+  width: 20%;
+  border: 2px solid black;
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+  order: 0;
+}
+
+.women {
+  height: 70vh;
+  width: 40%;
+  border: 2px solid black;
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+  order: 0;
+}
+.view-more{
+  height: 10vh;
+  width: 100%;
+  border: 2px solid black;
+}
+
 
 
