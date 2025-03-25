@@ -120,3 +120,288 @@ document.addEventListener('DOMContentLoaded', function() {
       window.removeEventListener('resize', handleResize);
     });
   });
+
+
+
+
+// //  hospitals
+// let hospitalsData = [];
+// let hospitalsIndex = 0;
+
+// // Function to get user location
+// function hospitalsGetUserLocation() {
+//     if (navigator.geolocation) {
+//         navigator.geolocation.getCurrentPosition(hospitalsSuccess, hospitalsError);
+//     } else {
+//         hospitalsShowError();
+//     }
+// }
+
+// // If location is granted
+// function hospitalsSuccess(position) {
+//     let lat = position.coords.latitude;
+//     let lng = position.coords.longitude;
+//     hospitalsFetchNearby(lat, lng);
+// }
+
+// // If location is denied
+// function hospitalsError() {
+//     document.getElementById("hospitals-location-error").classList.remove("hospitals-hidden");
+//     document.querySelector(".hospitals-container").classList.add("hospitals-hidden");
+// }
+
+// // Fetch hospitals from Overpass API
+// function hospitalsFetchNearby(lat, lng) {
+//     let url = `https://overpass-api.de/api/interpreter?data=[out:json];node[amenity=hospital](around:5000,${lat},${lng});out;`;
+
+//     fetch(url)
+//         .then(response => response.json())
+//         .then(data => {
+//             if (data.elements.length > 0) {
+//                 hospitalsData = data.elements;
+//                 hospitalsDisplay();
+//             } else {
+//                 hospitalsShowError("No hospitals found nearby.");
+//             }
+//         })
+//         .catch(() => hospitalsShowError("Error fetching hospital data."));
+// }
+
+// // Show error message if location is not granted
+// function hospitalsShowError(message = "Location access is required.") {
+//     document.getElementById("hospitals-location-error").classList.remove("hospitals-hidden");
+//     document.querySelector(".hospitals-container").classList.add("hospitals-hidden");
+//     document.getElementById("hospitals-location-error").innerHTML = `<p>${message}</p><button onclick="hospitalsGetUserLocation()">Grant Location</button>`;
+// }
+
+// // Display hospitals in the list
+// function hospitalsDisplay() {
+//     const container = document.getElementById("hospitals-list");
+//     container.innerHTML = "";
+
+//     hospitalsData.forEach(hospital => {
+//         let name = hospital.tags.name || "Unknown Hospital";
+//         let address = hospital.tags["addr:full"] || "Address not available";
+//         let phone = hospital.tags["contact:phone"] ? `<a href="tel:${hospital.tags["contact:phone"]}">📞 Call</a>` : "";
+
+//         let card = `
+//             <div class="hospitals-card">
+//                 <h3>${name}</h3>
+//                 <p>${address}</p>
+//                 ${phone}
+//             </div>
+//         `;
+//         container.innerHTML += card;
+//     });
+
+//     document.getElementById("hospitals-location-error").classList.add("hospitals-hidden");
+//     document.querySelector(".hospitals-container").classList.remove("hospitals-hidden");
+// }
+
+// // Scroll hospitals list
+// function hospitalsScroll(direction) {
+//     const container = document.getElementById("hospitals-list");
+//     const cardWidth = 270; // Card width + margin
+//     hospitalsIndex += direction;
+
+//     if (hospitalsIndex < 0) hospitalsIndex = 0;
+//     if (hospitalsIndex > hospitalsData.length - 1) hospitalsIndex = hospitalsData.length - 1;
+
+//     container.style.transform = `translateX(${-hospitalsIndex * cardWidth}px)`;
+// }
+
+// // Call location function when page loads
+// hospitalsGetUserLocation();
+
+
+// //hospitals end
+
+// //emergency
+// async function fetchNearestHospital() {
+//   if ("geolocation" in navigator) {
+//       navigator.geolocation.getCurrentPosition(async (position) => {
+//           let lat = position.coords.latitude;
+//           let lon = position.coords.longitude;
+          
+//           let url = `https://nominatim.openstreetmap.org/search?format=json&q=hospital+near+${lat},${lon}`;
+          
+//           let response = await fetch(url);
+//           let data = await response.json();
+
+//           if (data.length > 0) {
+//               document.getElementById("hospital-name").innerText = data[0].display_name.split(",")[0];
+//               document.getElementById("hospital-address").innerText = data[0].display_name;
+//           } else {
+//               document.getElementById("hospital-name").innerText = "No hospital found nearby.";
+//               document.getElementById("hospital-address").innerText = "";
+//           }
+//       });
+//   } else {
+//       document.getElementById("hospital-name").innerText = "Geolocation not supported.";
+//   }
+// }
+
+// fetchNearestHospital();
+
+
+// function showPopup() {
+//   let popup = document.getElementById("popup");
+//   popup.style.display = "flex";
+
+//   setTimeout(() => {
+//       popup.style.display = "none";
+//   }, 5000);
+// }
+
+// document.getElementById("call-ambulance").addEventListener("click", showPopup);
+// document.getElementById("call-doctor").addEventListener("click", showPopup);
+
+// document.getElementById("close-popup").addEventListener("click", () => {
+//   document.getElementById("popup").style.display = "none";
+// });
+
+
+// hospitals
+let hospitalsData = [];
+let hospitalsIndex = 0;
+
+// Function to get user location
+function hospitalsGetUserLocation() {
+    if (navigator.geolocation) {
+        document.getElementById("hospitals-loading").classList.remove("hospitals-hidden");
+        navigator.geolocation.getCurrentPosition(hospitalsSuccess, hospitalsError);
+    } else {
+        hospitalsShowError();
+    }
+}
+
+// If location is granted
+function hospitalsSuccess(position) {
+    let lat = position.coords.latitude;
+    let lng = position.coords.longitude;
+    hospitalsFetchNearby(lat, lng);
+}
+
+// If location is denied
+function hospitalsError() {
+    document.getElementById("hospitals-location-error").classList.remove("hospitals-hidden");
+    document.querySelector(".hospitals-container").classList.add("hospitals-hidden");
+    document.getElementById("hospitals-loading").classList.add("hospitals-hidden");
+}
+
+// Fetch hospitals from Overpass API
+function hospitalsFetchNearby(lat, lng) {
+    let url = `https://overpass-api.de/api/interpreter?data=[out:json];node[amenity=hospital](around:5000,${lat},${lng});out;`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("hospitals-loading").classList.add("hospitals-hidden");
+
+            if (data.elements.length > 0) {
+                hospitalsData = data.elements;
+                hospitalsDisplay();
+            } else {
+                hospitalsShowError("No hospitals found nearby.");
+            }
+        })
+        .catch(() => {
+            document.getElementById("hospitals-loading").classList.add("hospitals-hidden");
+            hospitalsShowError("Error fetching hospital data.");
+        });
+}
+
+// Show error message if location is not granted
+function hospitalsShowError(message = "Location access is required.") {
+    document.getElementById("hospitals-location-error").classList.remove("hospitals-hidden");
+    document.querySelector(".hospitals-container").classList.add("hospitals-hidden");
+    document.getElementById("hospitals-location-error").innerHTML = `<p>${message}</p><button onclick="hospitalsGetUserLocation()">Grant Location</button>`;
+}
+
+// Display hospitals in the list
+function hospitalsDisplay() {
+    const container = document.getElementById("hospitals-list");
+    container.innerHTML = "";
+
+    hospitalsData.forEach(hospital => {
+        let name = hospital.tags.name || "Unknown Hospital";
+        let address = hospital.tags["addr:full"] || "Address not available";
+        let phone = hospital.tags["contact:phone"] ? `<a href="tel:${hospital.tags["contact:phone"]}">📞 Call</a>` : "";
+
+        let card = `
+            <div class="hospitals-card">
+                <h3>${name}</h3>
+                <p>${address}</p>
+                ${phone}
+            </div>
+        `;
+        container.innerHTML += card;
+    });
+
+    document.getElementById("hospitals-location-error").classList.add("hospitals-hidden");
+    document.querySelector(".hospitals-container").classList.remove("hospitals-hidden");
+}
+
+// Scroll hospitals list
+function hospitalsScroll(direction) {
+    const container = document.getElementById("hospitals-list");
+    const cardWidth = 270; // Card width + margin
+    hospitalsIndex += direction;
+
+    if (hospitalsIndex < 0) hospitalsIndex = 0;
+    if (hospitalsIndex > hospitalsData.length - 1) hospitalsIndex = hospitalsData.length - 1;
+
+    container.style.transform = `translateX(${-hospitalsIndex * cardWidth}px)`;
+}
+
+// Call location function when page loads
+hospitalsGetUserLocation();
+
+
+// emergency
+async function fetchNearestHospital() {
+    if ("geolocation" in navigator) {
+        document.getElementById("emergency-loading").classList.remove("hospitals-hidden");
+
+        navigator.geolocation.getCurrentPosition(async (position) => {
+            let lat = position.coords.latitude;
+            let lon = position.coords.longitude;
+
+            let url = `https://nominatim.openstreetmap.org/search?format=json&q=hospital+near+${lat},${lon}`;
+
+            let response = await fetch(url);
+            let data = await response.json();
+
+            document.getElementById("emergency-loading").classList.add("hospitals-hidden");
+            document.getElementById("hospital-name").classList.remove("hospitals-hidden");
+            document.getElementById("hospital-address").classList.remove("hospitals-hidden");
+
+            if (data.length > 0) {
+                document.getElementById("hospital-name").innerText = data[0].display_name.split(",")[0];
+                document.getElementById("hospital-address").innerText = data[0].display_name;
+            } else {
+                document.getElementById("hospital-name").innerText = "No hospital found nearby.";
+                document.getElementById("hospital-address").innerText = "";
+            }
+        });
+    } else {
+        document.getElementById("hospital-name").innerText = "Geolocation not supported.";
+    }
+}
+
+fetchNearestHospital();
+
+function showPopup() {
+    let popup = document.getElementById("popup");
+    popup.style.display = "flex";
+
+    setTimeout(() => {
+        popup.style.display = "none";
+    }, 5000);
+}
+
+document.getElementById("call-ambulance").addEventListener("click", showPopup);
+document.getElementById("call-doctor").addEventListener("click", showPopup);
+document.getElementById("close-popup").addEventListener("click", () => {
+    document.getElementById("popup").style.display = "none";
+});

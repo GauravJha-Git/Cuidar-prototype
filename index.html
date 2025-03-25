@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CUIDAR</title>
   <link rel="stylesheet" href="style.css">
+  
 </head>
 <body>
   <canvas id="backgroundCanvas"></canvas>
@@ -17,12 +18,11 @@
 
     <!-- Center: Navigation Links -->
     <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Portfolio</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="#">CUIDAR AI</a></li>
+        <li><a href="#">Reports</a></li>
+        <li><a href="#">Meds</a></li>
+        <li><a href="#">Nearby-Hospitals</a></li>
+        <li><a href="#">About-us</a></li>
     </ul>
 
     <!-- Right: Image + Text + Buttons -->
@@ -49,12 +49,36 @@
           <div class="instantSearch"></div>
       </div>
 </section>
+
+<section id="before">
+
+</section>
+
 <section id="reports">
 
   <div class="reports-container">
-    <div class="graph"></div>
-    <div class="improvements"></div>
-    <div class="womens"></div>
+    <div class="graph">
+      <div>
+
+      </div>
+    </div>
+    <div class="improvements">
+      <div>
+        
+      </div>
+    </div>
+    <div class="womens">
+      <div id="cssportal-grid">
+        <div id="div1"><h1>WOMENS SECTION</h1></div>
+        <div id="div3"></div>
+        <div id="div6">
+        </div>
+        <div id="div7">div7</div>
+      </div>
+      
+      
+      
+    </div>
  </div>
  <div class="view-more">
 
@@ -62,13 +86,54 @@
 
 </section>
 
-<section id="hospitals">
+<section id="hospitals-section">
+  <h2 style="text-align: center;">Nearby Hospitals</h2>
 
+  <!-- Loading Indicator -->
+  <div id="hospitals-loading" class="hospitals-hidden">
+      <p>Loading...</p>
+  </div>
+
+  <!-- If location is not granted -->
+  <div id="hospitals-location-error" class="hospitals-hidden">
+      <p>Location access is required to show nearby hospitals.</p>
+      <button onclick="hospitalsGetUserLocation()">Grant Location</button>
+  </div>
+
+  <!-- Hospital cards container -->
+  <div class="hospitals-container hospitals-hidden">
+      <button class="hospitals-btn prev" onclick="hospitalsScroll(-1)">&#10094;</button>
+      <div class="hospitals-list-wrapper">
+          <div class="hospitals-list" id="hospitals-list">
+              <!-- Hospital cards will be dynamically added here -->
+          </div>
+      </div>
+      <button class="hospitals-btn next" onclick="hospitalsScroll(1)">&#10095;</button>
+  </div>
 </section>
 
 <section id="emergency">
+  <div class="hospital-info">
+      <h2>Nearest Hospital</h2>
 
+      <!-- Loading Indicator -->
+      <div id="emergency-loading">
+          <p>Loading...</p>
+      </div>
+
+      <p id="hospital-name" class="hospitals-hidden">Loading...</p>
+      <p id="hospital-address" class="hospitals-hidden">Fetching address...</p>
+  </div>
+  <div class="emergency-buttons">
+      <button id="call-ambulance" class="button-emer">🚑 Call Ambulance</button>
+      <button id="call-doctor" class="button-emer">🩺 Call Doctor</button>
+  </div>
+  <div id="popup">
+      <p>This website is still a prototype. More info is needed for full functionality.</p>
+      <button id="close-popup">✖</button>
+  </div>
 </section>
+
 
 <footer>
 
