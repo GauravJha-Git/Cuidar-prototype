@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CUIDAR</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   
 </head>
 <body>
@@ -12,8 +12,8 @@
   <nav class="navbar">
     <!-- Left: Logo & Name -->
     <div class="logo">
-        <img src="logo cuidar no bg.png" alt="Logo">
-        <p class="logo-text">Cuidar</p>
+        <img src="static\logo cuidar no bg.png" alt="Logo">
+        <p class="static\logo main cuidar.png">Cuidar</p>
     </div>
 
     <!-- Center: Navigation Links -->
@@ -21,7 +21,8 @@
         <li><a href="#">CUIDAR AI</a></li>
         <li><a href="#">Reports</a></li>
         <li><a href="#">Meds</a></li>
-        <li><a href="#">Nearby-Hospitals</a></li>
+        <li><a href="#hospitals-section">Nearby-Hospitals</a></li>
+        <li><a href="#emergency">Emergency</a></li>
         <li><a href="#">About-us</a></li>
     </ul>
 
@@ -39,56 +40,55 @@
 </nav>
 
   <section id="hero">
-        <div class="home-container">
-          <div class="aboutCustomer"></div>
-          <div class="ai">
-            <div class="aiContainer">
-              <iframe src="resources\ai_test1\templates\index.html" width="100%" height="500px" style="border: none;"></iframe>
+        
 
+            <div class="aiContainer">
+              <div class="app-container">
+                <div class="header-ai">
+                    <h1>CUIDAR AI</h1>
+                </div>
+                
+                <div class="chat-container" id="chat-container">
+                    <div class="ai-message message">
+                        <p>Hello! I'm your Medical Response AI. Describe your medical concern in detail, and I'll provide instant remedies and essential advice. Remember, this is for informational purposes only and not a substitute for professional medical care.</p>
+                    </div>
+                    
+                    <div class="typing-indicator" id="typing-indicator">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                
+                <div class="input-container">
+                    <div class="input-group">
+                        <textarea id="prompt-input" placeholder="Describe your medical concern in detail..." rows="1"></textarea>
+                        <button id="submit-btn" class="button-ai">
+                            <svg class="send-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="footer-ai">
+                    <p>This AI provides general information only. Always consult with a qualified healthcare provider for medical concerns.</p>
+                </div>
             </div>
-          </div>
-          <div class="instantSearch"></div>
-      </div>
+
+
+
+
 </section>
 
 <section id="before">
 
 </section>
 
-<section id="reports">
 
-  <div class="reports-container">
-    <div class="graph">
-      <div>
-
-      </div>
-    </div>
-    <div class="improvements">
-      <div>
-        
-      </div>
-    </div>
-    <div class="womens">
-      <div id="cssportal-grid">
-        <div id="div1"><h1>WOMENS SECTION</h1></div>
-        <div id="div3"></div>
-        <div id="div6">
-        </div>
-        <div id="div7">div7</div>
-      </div>
-      
-      
-      
-    </div>
- </div>
- <div class="view-more">
-
- </div>
-
-</section>
 
 <section id="hospitals-section">
-  <h2 style="text-align: center;">Nearby Hospitals</h2>
+  <h2 class="hospital-heading" >Nearby Hospitals</h2>
 
   <!-- Loading Indicator -->
   <div id="hospitals-loading" class="hospitals-hidden">
@@ -115,18 +115,20 @@
 
 <section id="emergency">
   <div class="hospital-info">
-      <h2>Nearest Hospital</h2>
-
+        <div class="nearest-text">
+      <p > <b>Nearest Hospital</b></p>
+        </div>
       <!-- Loading Indicator -->
       <div id="emergency-loading">
           <p>Loading...</p>
       </div>
-
+      <div id="emergencyCard"class="emergency-card hospitals-hidden">
       <p id="hospital-name" class="hospitals-hidden">Loading...</p>
       <p id="hospital-address" class="hospitals-hidden">Fetching address...</p>
+      </div>
   </div>
   <div class="emergency-buttons">
-      <button id="call-ambulance" class="button-emer">🚑 Call Ambulance</button>
+      <button id="call-ambulance" class="button-emer">🚑 Call Ambulance</button> 
       <button id="call-doctor" class="button-emer">🩺 Call Doctor</button>
   </div>
   <div id="popup">
@@ -145,6 +147,6 @@
 
 
   
-  <script src="script.js"></script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

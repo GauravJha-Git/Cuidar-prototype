@@ -120,7 +120,153 @@ document.addEventListener('DOMContentLoaded', function() {
       window.removeEventListener('resize', handleResize);
     });
   });
+ // ---------------------AI
+//  async function sendMessage() {
+//     let userInput = document.getElementById("user-input").value;
+//     if (!userInput.trim()) return;
 
+//     let chatBox = document.getElementById("chat-box");
+//     chatBox.innerHTML += `<div class="user-message">You: ${userInput}</div>`;
+
+//     try {
+//         let response = await fetch('/get_remedy', {
+//             method: 'POST',
+//             headers: { 'Content-Type': 'application/json' },
+//             body: JSON.stringify({ prompt: userInput })
+//         });
+
+//         let data = await response.json();
+//         let remedy = `
+//             <div class="ai-message">
+//                 <strong>Instant Remedy:</strong> ${data.instant_remedy}<br>
+//                 <strong>Essential Remedies:</strong> <ul>${data.essential_remedies.map(remedy => `<li>${remedy}</li>`).join('')}</ul>
+//                 <strong>Disclaimer:</strong> ${data.disclaimer}
+//             </div>
+//         `;
+
+//         chatBox.innerHTML += remedy;
+//     } catch (error) {
+//         chatBox.innerHTML += `<div class="ai-message error">Error fetching remedy. Try again later.</div>`;
+//     }
+    
+//     document.getElementById("user-input").value = "";
+// }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const promptInput = document.getElementById('prompt-input');
+    const submitBtn = document.getElementById('submit-btn');
+    const chatContainer = document.getElementById('chat-container');
+    const typingIndicator = document.getElementById('typing-indicator');
+
+    // Auto-resize textarea
+    promptInput.addEventListener('input', function() {
+        this.style.height = 'auto';
+        this.style.height = (this.scrollHeight) + 'px';
+        
+        // Cap the height
+        if (this.scrollHeight > 120) {
+            this.style.height = '120px';
+            this.style.overflowY = 'auto';
+        } else {
+            this.style.overflowY = 'hidden';
+        }
+    });
+
+    submitBtn.addEventListener('click', handleSubmit);
+    promptInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            handleSubmit();
+        }
+    });
+
+    function handleSubmit() {
+        const prompt = promptInput.value.trim();
+        if (!prompt) return;
+
+        // Add user message
+        addMessage(prompt, 'user');
+        promptInput.value = '';
+        promptInput.style.height = 'auto';
+        
+        // Show typing indicator
+        typingIndicator.style.display = 'block';
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+
+        // Disable input while processing
+        submitBtn.disabled = true;
+        promptInput.disabled = true;
+
+        fetch('/get_remedy', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ prompt: prompt }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Hide typing indicator
+            typingIndicator.style.display = 'none';
+            
+            // Add AI response
+            addAIResponse(data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            typingIndicator.style.display = 'none';
+            addMessage('Sorry, I encountered an error processing your request. Please try again.', 'ai');
+        })
+        .finally(() => {
+            submitBtn.disabled = false;
+            promptInput.disabled = false;
+            promptInput.focus();
+        });
+    }
+
+    function addMessage(text, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = sender === 'user' ? 'user-message message' : 'ai-message message';
+        messageDiv.textContent = text;
+        
+        chatContainer.appendChild(messageDiv);
+        scrollToBottom();
+    }
+
+    function addAIResponse(data) {
+        const responseDiv = document.createElement('div');
+        responseDiv.className = 'ai-message message';
+
+        responseDiv.innerHTML = `
+            <div>
+                <h3>Instant Remedy:</h3>
+                <p>${data.instant_remedy}</p>
+            </div>
+            <div>
+                <h3>Essential Remedies:</h3>
+                <ul>
+                    ${data.essential_remedies.map(remedy => `<li>${remedy}</li>`).join('')}
+                </ul>
+            </div>
+            <div class="disclaimer">
+                <strong>Important:</strong> ${data.disclaimer}
+            </div>
+        `;
+
+        chatContainer.appendChild(responseDiv);
+        scrollToBottom();
+    }
+
+    function scrollToBottom() {
+        setTimeout(() => {
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }, 100);
+    }
+});
+
+
+
+ //-------------------------
 
 
 
@@ -375,6 +521,7 @@ async function fetchNearestHospital() {
             document.getElementById("emergency-loading").classList.add("hospitals-hidden");
             document.getElementById("hospital-name").classList.remove("hospitals-hidden");
             document.getElementById("hospital-address").classList.remove("hospitals-hidden");
+            document.getElementById("emergencyCard").classList.remove("hospitals-hidden");
 
             if (data.length > 0) {
                 document.getElementById("hospital-name").innerText = data[0].display_name.split(",")[0];
