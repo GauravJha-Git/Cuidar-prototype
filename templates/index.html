@@ -8,7 +8,7 @@
   
 </head>
 <body>
-  <canvas id="backgroundCanvas"></canvas>
+  <canvas class="canvas-index" id="backgroundCanvas"></canvas>
   <nav class="navbar">
     <!-- Left: Logo & Name -->
     <div class="logo">
@@ -19,11 +19,10 @@
     <!-- Center: Navigation Links -->
     <ul class="nav-links">
         <li><a href="#">CUIDAR AI</a></li>
-        <li><a href="#">Reports</a></li>
-        <li><a href="#">Meds</a></li>
+        <li><a href="{{ url_for('health') }}">Reports</a></li>
         <li><a href="#hospitals-section">Nearby-Hospitals</a></li>
         <li><a href="#emergency">Emergency</a></li>
-        <li><a href="#">About-us</a></li>
+        <li><a href="{{ url_for('about') }}">About-us</a></li>
     </ul>
 
     <!-- Right: Image + Text + Buttons -->
@@ -138,9 +137,45 @@
 </section>
 
 
-<footer>
+<footer class="cuidar-footer">
+    <canvas class="canvas-footer" id="footerCanvas"></canvas>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <h3>Cuidar</h3>
+        <p>Healthcare for everyone</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-column">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="{{ url_for('index') }}">Cuidar AI</a></li>
+            <li><a href="{{ url_for('health') }}">Reports</a></li>
+            <li><a href="{{ url_for('index') }}">Emergency</a></li>
 
-</footer>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>About</h4>
+          <ul>
+            <li><a href="{{ url_for('about') }}">Our Mission</a></li>
+            <li><a href="{{ url_for('about') }}">Team</a></li>
+            <li><a href="{{ url_for('about') }}">Facilities</a></li>
+            <li><a href="{{ url_for('about') }}">Careers</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>About Cuidar</h4>
+
+          <h5>**Cuidar** is a healthcare companion app designed to provide instant relief, expert advice, women's health tracking, emergency assistance, online medicine sales, and geolocation-based doctor listings. It simplifies healthcare access with smart, AI-powered solutions. 🚀💙</h5>
+          
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Cuidar Medical. All rights reserved.</p>
+        
+      </div>
+    </div>
+  </footer>
 
 
 

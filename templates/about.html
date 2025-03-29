@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML 5 Boilerplate</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+        <canvas class="canvas-index" id="backgroundCanvas"></canvas>
+
+    <nav class="navbar">
+        <!-- Left: Logo & Name -->
+        <div class="logo">
+            <img src="static\logo cuidar no bg.png" alt="Logo">
+            <p class="static\logo main cuidar.png">Cuidar</p>
+        </div>
+    
+        <!-- Center: Navigation Links -->
+        <ul class="nav-links">
+            <li><a href="{{ url_for('index') }}">CUIDAR AI</a></li>
+            <li><a href="{{ url_for('health') }}">Reports</a></li>
+            <li><a href="{{ url_for('index') }}">Nearby-Hospitals</a></li>
+            <li><a href="{{ url_for('index') }}">Emergency</a></li>
+            <li><a href="{{ url_for('about') }}">About-us</a></li>
+        </ul>
+    
+        <!-- Right: Image + Text + Buttons -->
+        <div class="right-section">
+            
+            <!-- <p>Welcome Back!</p> -->
+            <button class="signup">Sign Up</button>
+            <button class="login">Login</button>
+            <!-- <img src="user.jpg" alt="Profile"> -->
+        </div>
+    
+        <!-- Mobile Menu Toggle -->
+        <button class="menu-toggle" id="menu-toggle">☰</button>
+    </nav>
+
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>

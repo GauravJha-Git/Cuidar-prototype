@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Monitoring App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='health.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <canvas class="canvas-index" id="backgroundCanvas"></canvas>
+
+    <nav class="navbar">
+        <!-- Left: Logo & Name -->
+        <div class="logo">
+            <img src="static\logo cuidar no bg.png" alt="Logo">
+            <p class="static\logo main cuidar.png">Cuidar</p>
+        </div>
+    
+        <!-- Center: Navigation Links -->
+        <ul class="nav-links">
+            <li><a href="{{ url_for('index') }}">CUIDAR AI</a></li>
+            <li><a href="{{ url_for('health') }}">Reports</a></li>
+            <li><a href="{{ url_for('index') }}">Nearby-Hospitals</a></li>
+            <li><a href="{{ url_for('index') }}">Emergency</a></li>
+            <li><a href="{{ url_for('about') }}">About-us</a></li>
+        </ul>
+    
+        <!-- Right: Image + Text + Buttons -->
+        <div class="right-section">
+            
+            <!-- <p>Welcome Back!</p> -->
+            <button class="signup">Sign Up</button>
+            <button class="login">Login</button>
+            <!-- <img src="user.jpg" alt="Profile"> -->
+        </div>
+    
+        <!-- Mobile Menu Toggle -->
+        <button class="menu-toggle" id="menu-toggle">☰</button>
+    </nav>
+
+
+
+    <div class="container-health">
+        <h1>Health Monitoring App</h1>
+        
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="sugar">Blood Sugar</button>
+            <button class="tab-btn" data-tab="bp">Blood Pressure</button>
+        </div>
+        
+        <!-- Sugar Level Tracking Section -->
+        <div class="tab-content" id="sugar-content">
+            <h2>Sugar Level Tracker</h2>
+            <div class="input-section">
+                <input type="number" id="fasting-sugar" placeholder="Fasting Sugar Level (mg/dL)">
+                <input type="number" id="post-meal-sugar" placeholder="Post Meal Sugar Level (mg/dL)">
+                <button id="submit-sugar-btn">Add Sugar Levels</button>
+            </div>
+
+            <div id="sugar-error-message" class="error-message"></div>
+
+            <div class="averages-section" id="averages-section">
+                <h3>5-Day Averages</h3>
+                <p>Fasting Sugar Average: <span id="fasting-average"></span> mg/dL</p>
+                <p>Post Meal Sugar Average: <span id="post-meal-average"></span> mg/dL</p>
+            </div>
+
+            <div class="chart-section">
+                <canvas id="sugar-chart"></canvas>
+            </div>
+            
+            <button id="clear-sugar-btn" class="clear-btn">Clear Sugar Data</button>
+        </div>
+        
+        <!-- Blood Pressure Tracking Section -->
+        
+
+    <script src="{{ url_for('static', filename='health.js') }}"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

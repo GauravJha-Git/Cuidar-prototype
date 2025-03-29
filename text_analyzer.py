@@ -17,7 +17,25 @@ class MedicalTextAnalyzer:
             "headache": ["headache", "migraine", "head pain", "tension headache", "pressure in head"],
             "common cold": ["runny nose", "stuffy nose", "sneezing", "sore throat", "congestion", "cough"],
             "fever": ["fever", "high temperature", "chills", "sweating", "hot", "feverish"],
-            "upset stomach": ["nausea", "vomiting", "diarrhea", "stomach pain", "indigestion", "stomach ache"]
+            "upset stomach": ["nausea", "vomiting", "diarrhea", "stomach pain", "indigestion", "stomach ache"],
+            "acne": ["pimples", "breakouts", "skin blemishes", "blackheads", "whiteheads"],
+            "allergic reaction": ["itchy skin", "rash", "hives", "swelling", "redness", "watery eyes"],
+            "constipation": ["difficulty passing stool", "hard stool", "infrequent bowel movements", "bloating", "straining"],
+            "eye strain": ["tired eyes", "burning eyes", "blurry vision", "dry eyes", "eye discomfort"],
+            "dry skin": ["flaky skin", "rough patches", "itchy skin", "cracked skin", "scaling"],
+            "motion sickness": ["nausea while traveling", "dizziness", "vomiting", "cold sweats", "lightheadedness"],
+            "dandruff": ["itchy scalp", "flaky scalp", "dry scalp", "scalp irritation", "white flakes"],
+            "sore muscles": ["muscle pain", "muscle stiffness", "body ache", "muscle cramps", "soreness"],
+            "toothache": ["tooth pain", "cavity", "gum pain", "sensitive teeth", "jaw pain"],
+            "sunburn": ["red skin", "burnt skin", "peeling skin", "painful skin", "blistering"],
+            "sleeplessness": ["difficulty sleeping", "restlessness", "insomnia", "waking up frequently", "tossing and turning"],
+            "ear pain": ["earache", "blocked ear", "ear infection", "ringing in ear", "sharp ear pain"],
+            "snoring": ["noisy breathing", "sleep disturbance", "dry mouth", "sore throat in morning", "gasping for air"],
+            "anemia": ["fatigue", "pale skin", "shortness of breath", "dizziness", "weakness"],
+            "dehydration": ["dry mouth", "dark urine", "dizziness", "fatigue", "increased thirst"],
+            "stress": ["anxiety", "nervousness", "irritability", "difficulty concentrating", "head tension"],
+            "back pain": ["pain in back", "strain in back", "muscle stretch of back", "pain back"]
+
         }
     
     def preprocess_text(self, text):
