@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HTML 5 Boilerplate</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}">
   </head>
   <body>
         <canvas class="canvas-index" id="backgroundCanvas"></canvas>
@@ -38,6 +39,127 @@
         <!-- Mobile Menu Toggle -->
         <button class="menu-toggle" id="menu-toggle">☰</button>
     </nav>
+    
+
+  <!-- About Section -->
+  <section id="sobreNosotros">
+      <div class="contenedor">
+          <h2 class="tituloSeccion">About Cuidar</h2>
+          <div class="contenidoSobre">
+              <div class="textoSobre">
+                  <h3>Our Mission</h3>
+                  <p>At <strong>Cuidar</strong>, our mission is to revolutionize healthcare accessibility by providing instant relief, expert guidance, and essential medical services—all in one seamless platform.</p>
+    
+                  <br>
+                  
+                  <p>We aim to empower individuals with reliable health information, AI-driven diagnostics, and geolocation-based doctor listings to ensure timely care. With a focus on women’s health, emergency assistance, and online medicine accessibility, Cuidar is committed to making healthcare more efficient, inclusive, and user-friendly.</p>
+                  
+                  <br>
+                  
+                  <p>Our goal is to bridge the gap between technology and healthcare, ensuring that quality medical support is just a tap away.</p>
+              </div>
+              <div class="logoContenedor">
+                  <img src="/static/logo main cuidar.png" alt="Cuidar Logo" class="logoImagen">
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- Team Section -->
+  <section id="equipo">
+      <div class="contenedor">
+          <h2 class="tituloSeccion">Our Team</h2>
+          <div class="contenedorEquipo">
+              <!-- Team Member 1 -->
+              <div class="miembro">
+                  <div class="imagenMiembro">
+                      <img src="/api/placeholder/260/260" alt="Sarah Johnson">
+                  </div>
+                  <div class="infoMiembro">
+                      <h3>Sarah Johnson</h3>
+                      <p class="rolMiembro">Founder & CEO</p>
+                      <p class="bioMiembro">With over 15 years of experience in the industry, Sarah brings vision and leadership to Cuidar. Her innovative thinking has shaped our core values.</p>
+                  </div>
+              </div>
+
+              <!-- Team Member 2 -->
+              <div class="miembro">
+                  <div class="imagenMiembro">
+                      <img src="/api/placeholder/260/260" alt="Michael Chen">
+                  </div>
+                  <div class="infoMiembro">
+                      <h3>Michael Chen</h3>
+                      <p class="rolMiembro">CTO</p>
+                      <p class="bioMiembro">Michael oversees our technological infrastructure and development. His expertise in emerging technologies drives our innovation forward.</p>
+                  </div>
+              </div>
+
+              <!-- Team Member 3 -->
+              <div class="miembro">
+                  <div class="imagenMiembro">
+                      <img src="/api/placeholder/260/260" alt="Elena Rodriguez">
+                  </div>
+                  <div class="infoMiembro">
+                      <h3>Elena Rodriguez</h3>
+                      <p class="rolMiembro">Head of Operations</p>
+                      <p class="bioMiembro">Elena ensures smooth operations across all departments. Her strategic thinking and attention to detail keep Cuidar running efficiently.</p>
+                  </div>
+              </div>
+
+              <!-- Team Member 4 -->
+              <div class="miembro">
+                  <div class="imagenMiembro">
+                      <img src="/api/placeholder/260/260" alt="James Wilson">
+                  </div>
+                  <div class="infoMiembro">
+                      <h3>James Wilson</h3>
+                      <p class="rolMiembro">Creative Director</p>
+                      <p class="bioMiembro">James brings creative solutions to complex problems. His artistic background and analytical mind create the perfect blend for innovation.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- Social Section -->
+  <section id="redes">
+      <div class="contenedor">
+          <h2 class="tituloSeccion">Connect With Us</h2>
+          <p>Stay updated with our latest news and initiatives by following us on social media.</p>
+          <div class="iconosRedes">
+              
+              <div class="iconoRed">
+                  <a href="https://x.com/Gauravjha_X" aria-label="Twitter">
+                      <i>t</i>
+                  </a>
+              </div>
+              <div class="iconoRed">
+                  <a href="https://www.instagram.com/gaurav__jha_09/?__pwa=1" aria-label="Instagram">
+                      <i>i</i>
+                  </a>
+              </div>
+              <div class="iconoRed">
+                  <a href="https://www.linkedin.com/in/gaurav-jha-63432629a/" aria-label="LinkedIn">
+                      <i>in</i>
+                  </a>
+              </div>
+          </div>
+          <p>Email us at: <strong>gauravjha092006@gmail.com</strong></p>
+      </div>
+  </section>
+
+  <!-- Thank You Section -->
+  <section id="gracias">
+      <div class="contenedor">
+          <div class="mensajeGracias">
+              <h2>Thank You for Your Interest in Cuidar</h2>
+              <p>We appreciate you taking the time to learn more about our mission. Your support and trust inspire us to continue our journey of making a positive impact.</p>
+              <br>
+              <p>We look forward to connecting with you and exploring how we can work together towards a brighter future.</p>
+          </div>
+      </div>
+  </section>
+
 
     
     <script src="{{ url_for('static', filename='script.js') }}"></script>

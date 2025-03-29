@@ -595,13 +595,7 @@ button {
   gap: 10px;
 }
 
-.button-emer {
-  
-}
 
-.button-emer:hover {
-  
-}
 
 #popup {
   position: fixed;
@@ -780,5 +774,136 @@ button {
   .footer-social {
     margin-top: 1rem;
     justify-content: center;
+  }
+}
+
+
+
+
+.button-emer {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: white;
+  color: #e74c3c;
+  font-size: 24px;
+  font-weight: bold;
+  border: 3px solid #e74c3c;
+  cursor: pointer;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  z-index: 1;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.button-emer:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Pulsing red border */
+.button-emer::before,
+.button-emer::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: calc(100% + 6px);
+  height: calc(100% + 6px);
+  border-radius: 50%;
+  border: 3px solid #e74c3c;
+  z-index: -1;
+  opacity: 0.6;
+}
+
+.button-emer::before {
+  animation: pulse 2s ease-out infinite;
+}
+
+.button-emer::after {
+  animation: pulse 2s ease-out 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+  color: #e74c3c;
+  animation: subtle-bounce 1.5s ease-in-out infinite;
+}
+
+@keyframes subtle-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Red pulse inside the button */
+.inner-pulse {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(231, 76, 60, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+  animation: inner-pulse 2s ease-in-out infinite;
+}
+
+@keyframes inner-pulse {
+  0%, 100% {
+    transform: scale(0.8);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.6;
+  }
+}
+
+/* Shimmering effect */
+.shimmer {
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(30deg);
+  animation: shimmer 4s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+    top: -100%;
+  }
+  100% {
+    left: 100%;
+    top: 100%;
   }
 }
