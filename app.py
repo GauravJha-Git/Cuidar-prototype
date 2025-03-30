@@ -723,4 +723,8 @@ def clear_readings():
     return jsonify({"message": "Blood pressure readings cleared"})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000)
+
+    
+    
