@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Health Monitoring App</title>
+    <title>CUIDAR</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='health.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -74,6 +74,39 @@
         </div>
         
         <!-- Blood Pressure Tracking Section -->
+
+        <div class="tab-content hidden" id="bp-content">
+            <h2>Blood Pressure Tracker</h2>
+            
+            <div class="input-section">
+                <input type="number" id="systolic" placeholder="Systolic Pressure (mmHg)" min="1" max="300">
+                <input type="number" id="diastolic" placeholder="Diastolic Pressure (mmHg)" min="1" max="300">
+                <button id="submit-bp-btn">Record Blood Pressure</button>
+            </div>
+            
+            <div id="bp-result" class="result"></div>
+            
+            <div class="chart-section">
+                <canvas id="bp-chart"></canvas>
+            </div>
+            
+            <div class="readings-section">
+                <h3>Recent Readings</h3>
+                <table id="readings-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Systolic</th>
+                            <th>Diastolic</th>
+                            <th>Category</th>
+                        </tr>
+                    </thead>
+                    <tbody id="readings-body"></tbody>
+                </table>
+                <button id="clear-bp-btn" class="clear-btn">Clear BP Readings</button>
+            </div>
+        </div>
+    </div>
         
 
     <script src="{{ url_for('static', filename='health.js') }}"></script>
