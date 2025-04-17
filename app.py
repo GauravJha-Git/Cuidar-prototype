@@ -29,7 +29,7 @@ medical_database = {
     },
     "common cold": {
         "keywords": ["cold", "common cold", "runny nose", "stuffy nose", "sneezing", "cough", "sore throat"],
-        "instant_remedy": "Rest, stay hydrated, and take over-the-counter cold medications to manage symptoms. Gargle with warm salt water for sore throat.",
+        "instant_remedy": "Rest, stay hydrated, take cloves for temporary relief,and take over-the-counter cold medications to manage symptoms. Gargle with warm salt water for sore throat.",
         "essential_remedies": [
             "Drink warm liquids like herbal tea with honey",
             "Use a humidifier to add moisture to the air",
