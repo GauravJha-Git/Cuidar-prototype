@@ -66,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Destroy existing chart if it exists
         if (sugarChart) {
             sugarChart.destroy();
+            
         }
 
         // Prepare labels based on actual timestamps or default to Day 1, Day 2, etc.
